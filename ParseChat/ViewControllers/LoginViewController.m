@@ -43,6 +43,7 @@
     }
     else {
         [self registerUser];
+        [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
     }
 }
 
@@ -65,6 +66,7 @@
     }
     else {
         [self loginUser];
+        [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
     }
 }
 
@@ -81,7 +83,7 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
+           // NSLog(@"User registered successfully");
             
             // manually segue to logged in view
         }
@@ -96,7 +98,7 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            NSLog(@"User logged in successfully");
+            // NSLog(@"User logged in successfully");
             
             // display view controller that needs to shown after successful login
         }
