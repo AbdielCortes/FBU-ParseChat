@@ -43,7 +43,6 @@
     }
     else {
         [self registerUser];
-        [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
     }
 }
 
@@ -66,7 +65,6 @@
     }
     else {
         [self loginUser];
-        [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
     }
 }
 
@@ -82,10 +80,18 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
+            
+            if (error.code == 202) { // account already exists
+                UIAlertController *loginAlert = [UIAlertController alertControllerWithTitle:@"Account Error" message:@"Account already exists for this username." preferredStyle:(UIAlertControllerStyleAlert)];
+                       
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+                [loginAlert addAction:okAction];
+                   
+                [self presentViewController:loginAlert animated:YES completion:^{}];
+            }
         } else {
            // NSLog(@"User registered successfully");
-            
-            // manually segue to logged in view
+            [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
         }
     }];
 }
@@ -97,10 +103,18 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            
+            if (error.code == 101) {// incorrect username/password
+                UIAlertController *loginAlert = [UIAlertController alertControllerWithTitle:@"Invalid Login" message:@"Username and password combination is invalid." preferredStyle:(UIAlertControllerStyleAlert)];
+                       
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+                [loginAlert addAction:okAction];
+                   
+                [self presentViewController:loginAlert animated:YES completion:^{}];
+            }
         } else {
             // NSLog(@"User logged in successfully");
-            
-            // display view controller that needs to shown after successful login
+            [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
         }
     }];
 }
