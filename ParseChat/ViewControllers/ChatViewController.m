@@ -29,15 +29,17 @@
     self.tableView.delegate = self;
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshMessages) userInfo:nil repeats:true];
+    [self.tableView reloadData];
 }
 
 - (IBAction)tappedSend:(id)sender {
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_fbu2020"];
     chatMessage[@"text"] = self.messageField.text;
+    chatMessage[@"user"] = PFUser.currentUser;
     
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (succeeded) {
-            //NSLog(@"The message was saved!");
+            NSLog(@"The message was saved!");
             self.messageField.text = @""; // clears text field
         } else {
             NSLog(@"Problem saving message: %@", error.localizedDescription);
@@ -65,7 +67,7 @@
 
 -(void)refreshMessages {
     // construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"Message_fbu2019"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Message_fbu2020"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user"];
 
