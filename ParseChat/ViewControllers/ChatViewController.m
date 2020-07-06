@@ -52,6 +52,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
     cell.messageText.text = self.messages[indexPath.row][@"text"];
+    PFUser *user = self.messages[indexPath.row][@"user"];
+    
+    if (user) {
+        cell.username.text = user.username;
+    } else {
+        cell.username.text = @"anon";
+    }
     
     return cell;
 }
@@ -60,12 +67,14 @@
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Message_fbu2019"];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"user"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.messages = posts;
             [self.tableView reloadData];
+            //NSLog(@"reloaded");
         } else {
             NSLog(@"%@", error.localizedDescription);
         }

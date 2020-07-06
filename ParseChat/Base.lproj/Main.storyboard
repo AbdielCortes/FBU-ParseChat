@@ -114,29 +114,39 @@
                                 <rect key="frame" x="0.0" y="127" width="414" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="wjq-fh-w02" customClass="MessageCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="60" id="wjq-fh-w02" customClass="MessageCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wjq-fh-w02" id="nIM-2i-NAa">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJP-Cy-abJ">
-                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJP-Cy-abJ">
+                                                    <rect key="frame" x="20" y="27" width="374" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yb-9b-Hb9">
+                                                    <rect key="frame" x="20" y="11" width="73" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XJP-Cy-abJ" secondAttribute="bottom" constant="0.5" id="8QU-Na-bu4"/>
-                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="top" secondItem="nIM-2i-NAa" secondAttribute="topMargin" id="Sw0-c0-6eu"/>
-                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="trailing" secondItem="nIM-2i-NAa" secondAttribute="trailingMargin" id="YSt-bl-MjV"/>
-                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="leading" secondItem="nIM-2i-NAa" secondAttribute="leadingMargin" id="dFO-i3-auu"/>
+                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="trailing" secondItem="nIM-2i-NAa" secondAttribute="trailingMargin" id="6XV-3c-Lqx"/>
+                                                <constraint firstItem="8Yb-9b-Hb9" firstAttribute="leading" secondItem="nIM-2i-NAa" secondAttribute="leadingMargin" id="CrG-Fr-tWx"/>
+                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nIM-2i-NAa" secondAttribute="bottomMargin" id="Ddn-9B-yLe"/>
+                                                <constraint firstItem="8Yb-9b-Hb9" firstAttribute="top" secondItem="nIM-2i-NAa" secondAttribute="topMargin" id="X5x-BI-HIk"/>
+                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="leading" secondItem="nIM-2i-NAa" secondAttribute="leadingMargin" id="Zj5-lD-0Wx"/>
+                                                <constraint firstItem="XJP-Cy-abJ" firstAttribute="top" secondItem="nIM-2i-NAa" secondAttribute="topMargin" constant="16" id="hs5-RY-q9l"/>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="8Yb-9b-Hb9" secondAttribute="trailing" constant="306" id="pJR-QL-Yit"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageText" destination="XJP-Cy-abJ" id="bsE-If-5nr"/>
+                                            <outlet property="username" destination="8Yb-9b-Hb9" id="cjc-fn-Vsu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MessageCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *messageText;
+@property (weak, nonatomic) IBOutlet UILabel *username;
 
 @end
 
